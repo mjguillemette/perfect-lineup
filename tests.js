@@ -32,7 +32,7 @@ describe('Checkout', () => {
   })
 
   describe('getPositionCounts', () => {
-    it.skip('returns all positions currently filled and the count of players in each', () => {
+    it.('returns all positions currently filled and the count of players in each', () => {
       const lineup = [
         { id: 1, name: 'Chris Sale', position: 'P', teamId: 22, gameId: 123, salary: 9500 },
         { id: 2, name: 'Bryce Harper', position: 'OF', teamId: 12, gameId: 119, salary: 3800 },
