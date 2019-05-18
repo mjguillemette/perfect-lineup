@@ -5,7 +5,10 @@ export function calculateTotalSalary(lineup) {
 }
 
 export function getPositionCounts(lineup) {
-  return {}
+  return lineup.reduce((tally, player) => {
+    tally[player.position] = tally[player.position] === undefined ? 1 : tally[player.position] + 1
+    return tally
+  }, {})
 }
 
 export function getGameCounts(lineup) {
@@ -43,8 +46,8 @@ export function violatesTeamCount(teams) {
 export function validateLineup(lineup) {
   const gameCounts = getGameCounts(lineup)
   const teamCounts = getTeamCounts(lineup)
-  // const positionCounts = getPositionCounts(lineup)
+  const positionCounts = getPositionCounts(lineup)
 
   return !violatesGameCount(gameCounts) && !violatesSalary(lineup) &&
-    !violatesTeamCount(teamCounts) // && !violatesPositionCount(positionCounts)
+    !violatesTeamCount(teamCounts)  && !violatesPositionCount(positionCounts)
 }
